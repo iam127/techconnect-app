@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return 'Página principal de prueba';
-});
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+
+Route::get('/', [DashboardController::class, 'index']);
 
 
 Route::get('/test', function () {
@@ -13,3 +13,7 @@ Route::get('/test', function () {
         'mensaje' => 'La aplicación está funcionando correctamente'
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
